@@ -28,13 +28,10 @@ class UserController extends Controller
      */
     public function updateUserImage(Request $request)
     {
-        $request->validate([
-            'image' => 'required|mimes:png,jpg,jpeg',
-            'height' => 'required',
-            'width' => 'required',
-            'left' => 'required',
-            'top' => 'required'
-        ]);
+        $request->validate(['image' => 'required|mimes:png,jpg,jpeg']);
+        if ($request->height === '' || $request->width === '' || $request->top === '' || $request->left === '') {
+            return response()->json(['error' => 'The dimensions are incomplete'], 400);
+        }
 
         try {
             $user = (new FileService)->updateImage(auth()->user(), $request);

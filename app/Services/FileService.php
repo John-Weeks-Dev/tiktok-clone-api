@@ -22,10 +22,10 @@ class FileService
         $extension = $file->getClientOriginalExtension();
 
         $image->crop(
-            (int) $request->width,
-            (int) $request->height,
-            (int) $request->left,
-            (int) $request->top
+            $request->width,
+            $request->height,
+            $request->left,
+            $request->top
         );
 
         $name = time() . '.' . $extension;
