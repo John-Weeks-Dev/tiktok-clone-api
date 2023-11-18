@@ -15,8 +15,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
-            'video' => 'required|mimes:mp4',
             'text' => 'required'
         ]);
 
@@ -24,7 +24,11 @@ class PostController extends Controller
             $post = new Post;
             $post = (new FileService)->addVideo($post, $request);
 
-            $post->user_id = auth()->user()->id;
+            if (isset($request->user_id)) {
+                $post->user_id = $request->user_id;
+            } else {
+                $post->user_id = auth()->user()->id;
+            }
             $post->text = $request->input('text');
             $post->save();
 

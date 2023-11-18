@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use Image;
+use Illuminate\Support\Str;
+
 
 class FileService
 {
@@ -39,8 +41,10 @@ class FileService
     {
         $video = $request->file('video');
         $extension = $video->getClientOriginalExtension();
-        $name = time() . '.' . $extension;
-        $video->move(public_path() . '/files/', $name);
+
+        $name = str::random() . '.' . $extension;
+        copy($video->path(), public_path() . '/files/' . $name);
+        //$video->move(public_path() . '/files/', $name); //TODO UNCOMMENT THIS LINE AND DELETE THE LINE ABOVE
         $model->video = '/files/' . $name;
 
         return $model;
