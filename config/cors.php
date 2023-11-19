@@ -25,7 +25,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('FRONTEND_URL', 'fickfack.de')],
+    'allowed_origins' => [env('FRONTEND_URL', 'https://fikfuck.de')],
 
     'allowed_origins_patterns' => [],
 
