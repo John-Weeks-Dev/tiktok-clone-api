@@ -25,7 +25,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [ 'https://fikfuck.de'],
+    'allowed_origins' => [ 'fikfuck.de'],
     'Access-Control-Allow-Origin' => [ 'https://fikfuck.de'],
 
 
