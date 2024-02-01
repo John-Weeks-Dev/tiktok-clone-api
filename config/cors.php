@@ -25,9 +25,11 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:3000')],
+    'allowed_origins' => [ 'fikfuck.de'],
+    'Access-Control-Allow-Origin' => [ 'https://fikfuck.de'],
 
-    'allowed_origins_patterns' => [],
+
+'allowed_origins_patterns' => [],
 
     'allowed_headers' => ['*'],
 

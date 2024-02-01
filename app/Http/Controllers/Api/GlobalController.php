@@ -14,12 +14,12 @@ class GlobalController extends Controller
     public function getRandomUsers()
     {
         try {
+            $randomUsers = User::inRandomOrder()->limit(10)->get();
+
             $suggested = User::inRandomOrder()->limit(5)->get();
-            $following = User::inRandomOrder()->limit(10)->get();
 
             return response()->json([
                 'suggested' => new UsersCollection($suggested),
-                'following' => new UsersCollection($following)
             ], 200);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 400);
